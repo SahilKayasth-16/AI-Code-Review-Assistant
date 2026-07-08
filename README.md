@@ -31,20 +31,17 @@ An AI-powered Code Review Assistant built using the MERN Stack.
 
 ## Project Structure
 AI-Code-Review-Assistant/
-│
-├── client/
-├── server/
-├── README.md
-└── .gitignore
+ - client/
+ - server/
+ - .gitignore
+ - README.md
 
 ## Installation
-Frontend
-
+1) Frontend
 cd client
 npm install
 
-Backend
-
+2) Backend
 cd server
 npm install
 
