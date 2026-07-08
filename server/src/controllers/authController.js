@@ -59,7 +59,7 @@ export const registerUser = async (req, res) => {
     }
 };
 
-//LOGIN BHAI
+//LOGIN API
 export const loginUser = async (req, res) => {
     try {
         const {email, password} = req.body;
