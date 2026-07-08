@@ -38,12 +38,12 @@ AI-Code-Review-Assistant/
 
 ## Installation
 1) Frontend
-cd client
-npm install
+ - cd client
+ - npm install
 
 2) Backend
-cd server
-npm install
+ - cd server
+ - npm install
 
 ## Author
 Sahil Kayasth
