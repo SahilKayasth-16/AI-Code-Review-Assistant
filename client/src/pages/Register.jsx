@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { registerUser } from "../services/authService";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -17,7 +21,12 @@ const Register = () => {
                 password
             });
 
-            console.log(response)
+            setName("");
+            setEmail("");
+            setPassword("");
+
+            toast.success("Registration Successful.")
+            navigate("/")
         } catch(error) {
             console.error(
                 error.response?.data?.message || "Something Went Wrong." 
@@ -49,7 +58,7 @@ const Register = () => {
                     <button type="submit">{loading ? "Creating Account" : "Register" }</button>
                 </form>
 
-                <p className="login-link">Already Registered ? <span>Login here</span></p>
+                <p className="login-link">Already Registered ?{" "} <Link to={"/"}>Login here</Link></p>
             </div>
         </div>
     );

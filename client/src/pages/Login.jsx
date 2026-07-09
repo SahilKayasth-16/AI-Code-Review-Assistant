@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../services/authService";
+import { useAuth } from "../context/AuthContext"
 import "../styles/Login.css";
 
 const Login = () => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
+
+    const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -16,7 +21,8 @@ const Login = () => {
                 password,
             });
 
-            console.log(response);
+           login(response.user, response.token);
+           navigate("/dashboard")
         } catch(error) {
             console.error(
                 error.response?.data?.message || "Something went wrong."
@@ -43,7 +49,7 @@ const Login = () => {
                     <button type="submit">{ loading ? "Logging in" : "Login" }</button>
                 </form>
 
-                <p className="register-link">Don't have an account ? <span>Register here</span></p>
+                <p className="register-link">Don't have an account ?{" "} <Link to={"/register"}>Register here</Link> </p>
             </div>
         </div>
     );
