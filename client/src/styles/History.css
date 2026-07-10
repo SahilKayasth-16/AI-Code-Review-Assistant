@@ -1,0 +1,214 @@
+.history-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.filters-card {
+    background: #e0e5ec;
+    border-radius: 24px;
+    padding: 24px 30px;
+    box-shadow: 
+        8px 8px 20px #bcc2cb, 
+        -8px -8px 20px #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-group {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 18px 15px 48px;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    background: #e0e5ec;
+    font-size: 15px;
+    color: #1f2937;
+    box-shadow: 
+        inset 6px 6px 12px #c2c8d0, 
+        inset -6px -6px 12px #ffffff;
+    transition: all 0.25s ease;
+}
+
+.search-input:focus {
+    box-shadow: 
+        inset 5px 5px 10px #bcc2cb, 
+        inset -5px -5px 10px #ffffff,
+        0 0 0 3px rgba(79, 140, 255, 0.15);
+}
+
+.filter-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.select-icon {
+    position: absolute;
+    left: 15px;
+    color: #4f8cff;
+    pointer-events: none;
+}
+
+.filter-select {
+    padding: 15px 36px 15px 40px;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    background: #e0e5ec;
+    font-size: 14px;
+    font-weight: 600;
+    color: #556070;
+    cursor: pointer;
+    box-shadow: 
+        6px 6px 12px #c5cad1, 
+        -6px -6px 12px #ffffff;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.25s ease;
+}
+
+.filter-select:hover {
+    color: #4f8cff;
+}
+
+.filter-select:focus {
+    box-shadow: 
+        inset 3px 3px 6px #c2c8d0, 
+        inset -3px -3px 6px #ffffff;
+}
+
+.loading-container-card {
+    background: #e0e5ec;
+    border-radius: 24px;
+    padding: 60px;
+    box-shadow: 
+        8px 8px 20px #bcc2cb, 
+        -8px -8px 20px #ffffff;
+}
+
+.empty-history-card {
+    background: #e0e5ec;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 
+        inset 4px 4px 8px #c2c8d0, 
+        inset -4px -4px 8px #ffffff;
+    text-align: center;
+}
+
+.empty-history-card p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.page-nav-btn {
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: none;
+    background: #e0e5ec;
+    color: #9ca3af;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: not-allowed;
+    box-shadow: 
+        4px 4px 8px #c5cad1, 
+        -4px -4px 8px #ffffff;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 10px;
+}
+
+.page-num {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #e0e5ec;
+    color: #556070;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 
+        4px 4px 8px #c5cad1, 
+        -4px -4px 8px #ffffff;
+    transition: all 0.2s ease;
+}
+
+.page-num:hover {
+    color: #4f8cff;
+}
+
+.page-num.active {
+    box-shadow: 
+        inset 3px 3px 6px #c2c8d0, 
+        inset -3px -3px 6px #ffffff;
+    color: #4f8cff;
+    font-weight: 700;
+}
+
+@media(max-width: 1100px) {
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 768px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    .filters-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-group {
+        justify-content: space-between;
+    }
+    .select-wrapper, .filter-select {
+        flex: 1;
+    }
+}

@@ -1,0 +1,126 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    outline: none;
+    user-select: none;
+}
+
+/* Primary Neumorphic Button (Linear Gradient Blue) */
+.btn-primary {
+    background: linear-gradient(135deg, #5d9cff, #3d7dff);
+    color: #ffffff;
+    box-shadow: 
+        6px 6px 14px #bcc2cb, 
+        -6px -6px 14px #ffffff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        8px 8px 18px #bcc2cb, 
+        -8px -8px 18px #ffffff;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    background: linear-gradient(135deg, #3d7dff, #5d9cff);
+}
+
+/* Secondary Neumorphic Button (Standard Gray Neumorphic Elevated) */
+.btn-secondary {
+    background: #e0e5ec;
+    color: #556070;
+    box-shadow: 
+        6px 6px 12px #c5cad1, 
+        -6px -6px 12px #ffffff;
+}
+
+.btn-secondary:hover {
+    color: #4f8cff;
+    transform: translateY(-2px);
+    box-shadow: 
+        8px 8px 16px #c5cad1, 
+        -8px -8px 16px #ffffff;
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 
+        inset 4px 4px 8px #c2c8d0, 
+        inset -4px -4px 8px #ffffff;
+}
+
+/* Danger Neumorphic Button */
+.btn-danger {
+    background: #e0e5ec;
+    color: #ef4444;
+    box-shadow: 
+        6px 6px 12px #c5cad1, 
+        -6px -6px 12px #ffffff;
+}
+
+.btn-danger:hover {
+    background: #ef4444;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 
+        8px 8px 16px #bcc2cb, 
+        -8px -8px 16px #ffffff;
+}
+
+.btn-danger:active {
+    transform: translateY(0);
+    box-shadow: 
+        inset 4px 4px 8px rgba(0,0,0,0.15), 
+        inset -4px -4px 8px rgba(255,255,255,0.8);
+}
+
+/* Outline style */
+.btn-outline {
+    background: transparent;
+    color: #4f8cff;
+    border: 2px solid rgba(79, 140, 255, 0.4);
+}
+
+.btn-outline:hover {
+    background: rgba(79, 140, 255, 0.05);
+    border-color: #4f8cff;
+    transform: translateY(-2px);
+}
+
+/* Disabled */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Button Spinner */
+.btn-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: btn-spin 0.8s linear infinite;
+}
+
+@keyframes btn-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.btn-icon {
+    display: inline-flex;
+    font-size: 16px;
+}

@@ -1,10 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { FaCode, FaHome, FaPlusCircle, FaHistory, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import "./Sidebar.css";
 
 const Sidebar = () => {
     const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate("/")
+    }
 
     return(
         <aside className="sidebar">
@@ -23,7 +29,7 @@ const Sidebar = () => {
 
                     <NavLink to="/new-review" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
                         <FaPlusCircle />
-                        <span>New Reivew</span>
+                        <span>New Review</span>
                     </NavLink>
 
                     <NavLink to="/history" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
@@ -38,12 +44,12 @@ const Sidebar = () => {
                 </nav>
             </div>
 
-            <button className="sign-out" onClick={logout}>
-                <FaSignInAlt />
+            <button className="logout-btn" onClick={handleLogout}>
+                <FaSignOutAlt />
                 <span>Logout</span>   
             </button>
         </aside>
     );
-}
+};
 
 export default Sidebar;
