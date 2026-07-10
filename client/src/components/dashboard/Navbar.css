@@ -1,0 +1,199 @@
+.dashboard-navbar{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:28px 32px;
+
+    background:#e0e5ec;
+
+    border-radius:22px;
+
+    box-shadow:
+        8px 8px 16px #c5cad1,
+        -8px -8px 16px #ffffff;
+
+    margin-bottom:30px;
+}
+
+/* =====================
+        LEFT
+===================== */
+
+.navbar-left h1{
+
+    font-size:32px;
+
+    color:#24324a;
+
+    margin-bottom:6px;
+}
+
+.navbar-left p{
+
+    color:#6b7280;
+
+    font-size:15px;
+}
+
+.navbar-left strong{
+
+    color:#4f8cff;
+}
+
+/* =====================
+        RIGHT
+===================== */
+
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+/* Notification */
+
+.notification-btn{
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    background:#e0e5ec;
+
+    color:#4f8cff;
+
+    font-size:20px;
+
+    box-shadow:
+        8px 8px 16px #c5cad1,
+        -8px -8px 16px #ffffff;
+
+    transition:.25s;
+}
+
+.notification-btn:hover{
+
+    transform:translateY(-3px);
+}
+
+/* Profile */
+
+.profile-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:12px 18px;
+
+    border-radius:18px;
+
+    background:#e0e5ec;
+
+    box-shadow:
+        8px 8px 16px #c5cad1,
+        -8px -8px 16px #ffffff;
+}
+
+.profile-icon{
+
+    font-size:42px;
+
+    color:#4f8cff;
+}
+
+.profile-card h4{
+
+    color:#24324a;
+
+    font-size:16px;
+
+    margin-bottom:3px;
+}
+
+.profile-card span{
+
+    color:#6b7280;
+
+    font-size:13px;
+}
+
+/* =====================
+      RESPONSIVE
+===================== */
+
+@media(max-width:900px){
+
+.dashboard-navbar{
+
+    padding:22px;
+}
+
+.profile-card{
+
+    padding:10px 14px;
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard-navbar{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+}
+
+.navbar-right{
+
+    width:100%;
+
+    justify-content:space-between;
+}
+
+}
+
+@media(max-width:500px){
+
+.dashboard-navbar{
+
+    padding:18px;
+}
+
+.navbar-left h1{
+
+    font-size:26px;
+}
+
+.profile-card div{
+
+    display:none;
+}
+
+.notification-btn{
+
+    width:46px;
+    height:46px;
+}
+
+}
