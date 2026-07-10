@@ -2,6 +2,7 @@ import { useState } from "react";
 import { registerUser } from "../services/authService";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../styles/Register.css";
 
 const Register = () => {
     const [name, setName] = useState("");
