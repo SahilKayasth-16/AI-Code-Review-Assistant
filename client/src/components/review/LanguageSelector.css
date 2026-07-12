@@ -44,6 +44,15 @@
         0 0 0 3px rgba(79, 140, 255, 0.15);
 }
 
+.language-select:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    background: #d8dee7;
+    box-shadow: 
+        inset 4px 4px 8px #c2c8d0, 
+        inset -4px -4px 8px #ffffff;
+}
+
 .custom-select-container::after {
     content: "▼";
     font-size: 10px;
@@ -53,4 +62,9 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+    transition: color 0.25s ease;
+}
+
+.custom-select-container.disabled::after {
+    color: #9ca3af;
 }

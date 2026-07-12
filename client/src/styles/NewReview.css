@@ -8,7 +8,7 @@
 .new-review-card {
     background: #e0e5ec;
     border-radius: 24px;
-    padding: 30px;
+    padding: 35px;
     box-shadow: 
         8px 8px 20px #bcc2cb, 
         -8px -8px 20px #ffffff;
@@ -16,59 +16,34 @@
 }
 
 .new-review-card h2 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     color: #24324a;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .page-desc {
     font-size: 15px;
     color: #6b7280;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
-.selector-row {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-bottom: 10px;
-}
-
-.selector-row > div {
-    flex: 1;
-}
-
-.upload-container {
+.form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 24px;
+    width: 100%;
 }
 
-.upload-label {
+.editor-label {
     font-size: 14px;
     font-weight: 600;
     color: #4b5563;
-}
-
-.upload-btn-coming-soon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 15px 18px;
-    border-radius: 16px;
-    border: none;
-    background: #e0e5ec;
-    color: #9ca3af;
-    font-size: 15px;
-    font-weight: 600;
-    box-shadow: 
-        4px 4px 8px #c5cad1, 
-        -4px -4px 8px #ffffff;
-    cursor: not-allowed;
-    outline: none;
+    text-align: left;
+    margin-bottom: 4px;
 }
 
 .error-message {
@@ -79,11 +54,13 @@
     margin-bottom: 20px;
     font-size: 14px;
     font-weight: 600;
+    border-left: 4px solid #ef4444;
 }
 
 .action-row {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .loader-card {
@@ -93,11 +70,4 @@
     box-shadow: 
         8px 8px 20px #bcc2cb, 
         -8px -8px 20px #ffffff;
-}
-
-@media(max-width: 768px) {
-    .selector-row {
-        flex-direction: column;
-        gap: 15px;
-    }
 }
