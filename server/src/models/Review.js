@@ -19,6 +19,28 @@ const reviewSchema = new mongoose.Schema(
             type: String,
             required: [true, "Code is required"]
         },
+
+        analysis: [
+            {
+                ruleId: {
+                    type: String,
+                    default: "Unknown"
+                },
+                severity: {
+                    type: Number,
+                },
+                message: {
+                    type: String,
+                },
+                line: {
+                    type: Number,
+                },
+                column: {
+                    type: Number,
+                }
+            },
+        ],
+
         reviewResult: {
             type: String,
             default: "Pending AI Review"

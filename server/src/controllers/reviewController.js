@@ -1,9 +1,11 @@
 import Review from "../models/Review.js";
+import analyzeCode from "../utils/analyzeCode.js";
 
 // CREATE REVIEW API
 export const createReview = async (req, res) => {
     try {
         const { language, code } = req.body;
+        
 
         // 1. Validation
         if (!language) {
@@ -17,7 +19,7 @@ export const createReview = async (req, res) => {
         if (!allowedLanguages.includes(language)) {
             return res.status(400).json({
                 success: false,
-                message: "Invalid language. Allowed values are HTML/CSS, JavaScript, Python."
+                message: "Invalid language. Allowed languages are HTML/CSS, JavaScript, Python only."
             });
         }
 
@@ -28,11 +30,25 @@ export const createReview = async (req, res) => {
             });
         }
 
+        let analysis = [];
+
+        if (language === "JavaScript") {
+            try {
+                analysis = await analyzeCode(code);
+            } catch (error) {
+                return res.status(500).json({
+                    success: false,
+                    message: "Static code analysis failed."
+                });
+            }
+        }
+
         // 2. Create and Save Review record
         const newReview = await Review.create({
             user: req.user._id,
             language,
-            code
+            code,
+            analysis
         });
 
         res.status(201).json({
