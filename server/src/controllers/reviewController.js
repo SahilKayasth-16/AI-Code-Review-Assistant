@@ -125,3 +125,34 @@ export const getReviewHistory = async (req, res) => {
         });
     }
 };
+
+// GET SINGLE REVIEW API
+export const getReivewById = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const review = await Review.findOne({
+            _id: id,
+            user: req.user._id
+        });
+
+        if (!review) {
+            return res.status(404).json({
+                success: false,
+                message: "Reivew not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            review
+        });
+    } catch(error) {
+        console.error(`Error in fetching review, ${error}`);
+
+        res.status(500).json({
+            success: false,
+            message: error.message || "An error occured while fetching review."
+        });
+    }
+};
