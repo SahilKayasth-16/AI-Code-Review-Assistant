@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { submitCodeReview } from "../services/reviewService";
 import LanguageSelector from "../components/review/LanguageSelector";
 import CodeEditor from "../components/review/CodeEditor";
 import Button from "../components/common/Button";
@@ -7,12 +9,13 @@ import { FaPlay } from "react-icons/fa";
 import "../styles/NewReview.css";
 
 const NewReview = () => {
+    const navigate = useNavigate();
     const [code, setCode] = useState("");
     const [language, setLanguage] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    const handleReview = (e) => {
+    const handleReview = async (e) => {
         if (e) e.preventDefault();
 
         // 1. Validation
@@ -29,10 +32,18 @@ const NewReview = () => {
         setError("");
         setLoading(true);
 
-        // 3. Simulate API call
-        setTimeout(() => {
+        try {
+            const data = await submitCodeReview(code, language);
+            if (data.success && data.review && data.review._id) {
+                navigate(`/review/${data.review._id}`);
+            } else {
+                setError("Failed to generate review. Response was missing details.");
+            }
+        } catch (err) {
+            setError(err.message || "An error occurred during the code review.");
+        } finally {
             setLoading(false);
-        }, 2500);
+        }
     };
 
     return (

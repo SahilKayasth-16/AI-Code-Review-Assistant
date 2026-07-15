@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ReviewCard from "../components/review/ReviewCard";
 import Loader from "../components/common/Loader";
 import { fetchReviewHistory } from "../services/reviewService";
@@ -6,6 +7,7 @@ import { FaSearch, FaFilter, FaCalendarAlt } from "react-icons/fa";
 import "../styles/History.css";
 
 const History = () => {
+    const navigate = useNavigate();
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +29,7 @@ const History = () => {
     }, []);
 
     const handleOpen = (id) => {
-        alert(`Opening review detail for Scan ID: ${id}`);
+        navigate(`/review/${id}`);
     };
 
     const handleDelete = (id) => {

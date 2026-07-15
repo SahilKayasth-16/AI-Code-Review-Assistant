@@ -8,6 +8,9 @@ const Navbar = () => {
     const location = useLocation();
 
     const getPageTitle = () => {
+        if (location.pathname.startsWith("/review/")) {
+            return "Code Review Result";
+        }
         switch (location.pathname) {
             case "/dashboard":
                 return "Dashboard";
