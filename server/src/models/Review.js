@@ -41,9 +41,14 @@ const reviewSchema = new mongoose.Schema(
             },
         ],
 
+        aiReview: {
+            type: Object,
+            default: null
+        },
+
         reviewResult: {
-            type: String,
-            default: "Pending AI Review"
+            type: mongoose.Schema.Types.Mixed,
+            default: null
         },
         status: {
             type: String,

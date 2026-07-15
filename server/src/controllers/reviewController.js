@@ -1,5 +1,7 @@
 import Review from "../models/Review.js";
 import analyzeCode from "../utils/analyzeCode.js";
+import generateAIReview from "../services/ollamaService.js";
+import generateReviewPrompt from "../utils/reviewPrompt.js";
 
 // CREATE REVIEW API
 export const createReview = async (req, res) => {
@@ -43,19 +45,57 @@ export const createReview = async (req, res) => {
             }
         }
 
-        // 2. Create and Save Review record
-        const newReview = await Review.create({
-            user: req.user._id,
-            language,
-            code,
-            analysis
-        });
+        // Generate AI Prompt
+        const prompt = generateReviewPrompt(language, code, analysis);
+
+        // Get AI Review from Gemini
+        let aiReview;
+
+        try {
+            aiReview = await generateAIReview(prompt);
+
+            if (!aiReview || typeof aiReview !== "object") {
+                return res.status(500).json({
+                    success: false,
+                    message: "Invalid AI response"
+                })
+            }
+        } catch (error) {
+            console.error("Gemini Error: ", error);
+
+            return res.status(500).json({
+                success: false,
+                message: "AI Code Review Failed.",
+                error: error.message
+            });
+        }
+
+        let newReview;
+
+        try {
+            newReview = await Review.create({
+                user: req.user._id,
+                language,
+                code,
+                analysis,
+                aiReview,
+                status: "Completed"
+            });
+        } catch(error) {
+            return res.status(500).json({
+                success: false,
+                message: "Failed to save reivew."
+            });
+        }
 
         res.status(201).json({
             success: true,
-            message: "Review submitted successfully.",
-            review: newReview
+            message: "Review Submitted Successfully !!",
+            review: newReview,
+            analysis,
+            aiReview
         });
+
     } catch (error) {
         console.error("Error creating review:", error);
         res.status(500).json({
