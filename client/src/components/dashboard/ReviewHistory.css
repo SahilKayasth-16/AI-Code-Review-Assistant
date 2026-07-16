@@ -260,3 +260,220 @@
 }
 
 }
+
+/* Additions for new dynamic Review History features */
+.review-card {
+    cursor: pointer;
+}
+
+.review-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.review-meta-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.review-meta-header h3 {
+    margin-bottom: 0 !important;
+}
+
+.review-summary-text {
+    color: #4b5563;
+    font-size: 14px;
+    margin: 4px 0;
+    line-height: 1.4;
+    max-width: 550px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.score-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #e0e5ec;
+    box-shadow: inset 2px 2px 5px #c3c8cf, inset -2px -2px 5px #ffffff;
+}
+
+.score-badge.high {
+    color: #059669;
+}
+
+.score-badge.medium {
+    color: #d97706;
+}
+
+.score-badge.low {
+    color: #dc2626;
+}
+
+.status.completed {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.status.pending {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.review-loading,
+.review-error,
+.review-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    background: #e0e5ec;
+    border-radius: 18px;
+    box-shadow: inset 5px 5px 10px #c6ccd3, inset -5px -5px 10px #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.review-empty p {
+    color: #6b7280;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.review-error {
+    gap: 12px;
+}
+
+.review-error .error-icon {
+    font-size: 32px;
+    color: #ef4444;
+}
+
+.review-error .error-message {
+    color: #dc2626;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.retry-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #4f8cff;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px #c3c8cf, -3px -3px 6px #ffffff;
+    transition: 0.2s;
+}
+
+.retry-btn:hover {
+    transform: translateY(-1px);
+}
+
+.search-bar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: #e0e5ec;
+    box-shadow: inset 4px 4px 8px #c3c8cf, inset -4px -4px 8px #ffffff;
+    padding: 2px 14px;
+    box-sizing: border-box;
+}
+
+.search-bar-icon {
+    color: #6b7280;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.search-bar-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 8px;
+    font-size: 15px;
+    color: #24324a;
+    outline: none;
+    font-weight: 500;
+}
+
+.search-bar-input::placeholder {
+    color: #9ca3af;
+}
+
+/* Deletion feature styling */
+.delete-review-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 14px;
+    background: #ffeaea;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px #c3c8cf, -3px -3px 6px #ffffff;
+    transition: 0.2s;
+}
+
+.delete-review-btn:hover:not(:disabled) {
+    background: #fecaca;
+    transform: translateY(-1px);
+}
+
+.delete-review-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.local-notification {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    padding: 16px 24px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    z-index: 1000;
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.1), -6px -6px 14px rgba(255, 255, 255, 0.8);
+    animation: slideInNotification 0.3s ease-out;
+}
+
+.local-notification.success {
+    background: #d1fae5;
+    color: #065f46;
+    border-left: 5px solid #059669;
+}
+
+.local-notification.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 5px solid #ef4444;
+}
+
+@keyframes slideInNotification {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
