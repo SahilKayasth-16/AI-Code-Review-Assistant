@@ -10,13 +10,12 @@
 
     border-radius:22px;
 
-    background:#e0e5ec;
+    background: var(--card-bg);
+    border: var(--card-border);
 
-    box-shadow:
-        8px 8px 18px #c2c8d0,
-        -8px -8px 18px #ffffff;
+    box-shadow: var(--card-shadow);
 
-    transition:.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     cursor:pointer;
 }
@@ -25,9 +24,8 @@
 
     transform:translateY(-5px);
 
-    box-shadow:
-        12px 12px 22px #c2c8d0,
-        -12px -12px 22px #ffffff;
+    box-shadow: var(--card-shadow);
+    filter: brightness(1.03);
 }
 
 .stat-icon{
@@ -46,11 +44,9 @@
 
     font-size:28px;
 
-    background:#e0e5ec;
+    background: var(--card-bg);
 
-    box-shadow:
-        inset 4px 4px 10px #c2c8d0,
-        inset -4px -4px 10px #ffffff;
+    box-shadow: var(--card-inset-shadow);
 }
 
 .stat-content{
@@ -62,7 +58,7 @@
 
 .stat-content p{
 
-    color:#6b7280;
+    color: var(--text-secondary);
 
     font-size:14px;
 
@@ -71,7 +67,7 @@
 
 .stat-content h2{
 
-    color:#24324a;
+    color: var(--text-primary);
 
     font-size:30px;
 

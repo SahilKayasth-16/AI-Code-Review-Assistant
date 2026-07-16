@@ -4,11 +4,10 @@
 
     border-radius:24px;
 
-    background:#e0e5ec;
+    background: var(--card-bg);
+    border: var(--card-border);
 
-    box-shadow:
-        10px 10px 20px #c3c8cf,
-        -10px -10px 20px #ffffff;
+    box-shadow: var(--card-shadow);
 }
 
 .review-header{
@@ -24,7 +23,7 @@
 
 .review-header h2{
 
-    color:#24324a;
+    color: var(--text-primary);
 
     font-size:24px;
 
@@ -43,21 +42,20 @@
 
     border-radius:14px;
 
-    background:#4f8cff;
+    background: var(--btn-bg);
 
     color:white;
 
     font-weight:600;
 
-    box-shadow:
-        6px 6px 14px #c3c8cf,
-        -6px -6px 14px #ffffff;
+    box-shadow: var(--btn-shadow);
 
-    transition:.25s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-header button:hover{
 
+    background: var(--btn-hover-bg);
     transform:translateY(-2px);
 }
 
@@ -82,18 +80,20 @@
 
     border-radius:18px;
 
-    background:#e0e5ec;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
 
-    box-shadow:
-        inset 5px 5px 10px #c6ccd3,
-        inset -5px -5px 10px #ffffff;
+    box-shadow: var(--glass-shadow);
 
-    transition:.25s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-card:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-4px) scale(1.005);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 .review-left{
@@ -121,18 +121,16 @@
 
     font-size:22px;
 
-    color:#10b981;
+    color: var(--accent-color);
 
-    background:#e0e5ec;
+    background: var(--card-bg);
 
-    box-shadow:
-        6px 6px 12px #c3c8cf,
-        -6px -6px 12px #ffffff;
+    box-shadow: var(--card-shadow);
 }
 
 .review-left h3{
 
-    color:#24324a;
+    color: var(--text-primary);
 
     font-size:17px;
 
@@ -147,7 +145,7 @@
 
     gap:8px;
 
-    color:#6b7280;
+    color: var(--text-secondary);
 
     font-size:14px;
 }

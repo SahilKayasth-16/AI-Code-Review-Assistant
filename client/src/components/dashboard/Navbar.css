@@ -10,13 +10,12 @@
 
     padding:28px 32px;
 
-    background:#e0e5ec;
+    background: var(--card-bg);
 
     border-radius:22px;
+    border: var(--card-border);
 
-    box-shadow:
-        8px 8px 16px #c5cad1,
-        -8px -8px 16px #ffffff;
+    box-shadow: var(--card-shadow);
 
     margin-bottom:30px;
 }
@@ -29,21 +28,21 @@
 
     font-size:32px;
 
-    color:#24324a;
+    color: var(--text-primary);
 
     margin-bottom:6px;
 }
 
 .navbar-left p{
 
-    color:#6b7280;
+    color: var(--text-secondary);
 
     font-size:15px;
 }
 
 .navbar-left strong{
 
-    color:#4f8cff;
+    color: var(--accent-color);
 }
 
 /* =====================
@@ -73,15 +72,13 @@
 
     cursor:pointer;
 
-    background:#e0e5ec;
+    background: var(--card-bg);
 
-    color:#4f8cff;
+    color: var(--accent-color);
 
     font-size:20px;
 
-    box-shadow:
-        8px 8px 16px #c5cad1,
-        -8px -8px 16px #ffffff;
+    box-shadow: var(--card-shadow);
 
     transition:.25s;
 }
@@ -89,6 +86,7 @@
 .notification-btn:hover{
 
     transform:translateY(-3px);
+    color: var(--accent-hover);
 }
 
 /* Profile */
@@ -105,23 +103,22 @@
 
     border-radius:18px;
 
-    background:#e0e5ec;
+    background: var(--card-bg);
+    border: var(--card-border);
 
-    box-shadow:
-        8px 8px 16px #c5cad1,
-        -8px -8px 16px #ffffff;
+    box-shadow: var(--card-shadow);
 }
 
 .profile-icon{
 
     font-size:42px;
 
-    color:#4f8cff;
+    color: var(--accent-color);
 }
 
 .profile-card h4{
 
-    color:#24324a;
+    color: var(--text-primary);
 
     font-size:16px;
 
@@ -130,7 +127,7 @@
 
 .profile-card span{
 
-    color:#6b7280;
+    color: var(--text-secondary);
 
     font-size:13px;
 }

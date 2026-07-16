@@ -1,25 +1,45 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
+  --bg: #e0e5ec;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  --accent: #4f8cff;
+  --accent-bg: rgba(79, 140, 255, 0.1);
+  --accent-border: rgba(79, 140, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+
+  /* App Theme Variables */
+  --app-bg: #e0e5ec;
+  --card-bg: #e0e5ec;
+  --text-primary: #24324a;
+  --text-secondary: #6b7280;
+  --card-shadow: 10px 10px 20px #bcc2cb, -10px -10px 20px #ffffff;
+  --card-inset-shadow: inset 5px 5px 10px #c6ccd3, inset -5px -5px 10px #ffffff;
+  --card-border: 1px solid rgba(255, 255, 255, 0.4);
+  --btn-bg: linear-gradient(135deg, #5d9cff, #3d7dff);
+  --btn-hover-bg: linear-gradient(135deg, #4f8cff, #2563eb);
+  --btn-shadow: 6px 6px 12px #c3c8cf, -6px -6px 12px #ffffff;
+  --accent-color: #4f8cff;
+  --accent-hover: #2563eb;
+  --input-bg: #e0e5ec;
+  --input-shadow: inset 6px 6px 12px #c2c8d0, inset -6px -6px 12px #ffffff;
+  --input-focus-shadow: inset 4px 4px 8px #bcc2cb, inset -4px -4px 8px #ffffff, 0 0 0 3px rgba(79, 140, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  color: var(--text-primary);
+  background: var(--app-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,15 +54,35 @@
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
-    --bg: #16171d;
+    --bg: #111216;
     --border: #2e303a;
     --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
+    --accent: #8b5cf6;
+    --accent-bg: rgba(139, 92, 246, 0.15);
+    --accent-border: rgba(139, 92, 246, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+    /* Dark Mode App Theme Variables */
+    --app-bg: #111216;
+    --card-bg: #181920;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --card-shadow: 8px 8px 20px #0b0c0e, -8px -8px 20px #1e2028;
+    --card-inset-shadow: inset 4px 4px 8px #0b0c0e, inset -4px -4px 8px #1e2028;
+    --card-border: 1px solid rgba(255, 255, 255, 0.04);
+    --btn-bg: linear-gradient(135deg, #8b5cf6, #6366f1);
+    --btn-hover-bg: linear-gradient(135deg, #7c3aed, #4f46e5);
+    --btn-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+    --accent-color: #8b5cf6;
+    --accent-hover: #7c3aed;
+    --input-bg: #15161c;
+    --input-shadow: inset 5px 5px 10px #0b0c0e, inset -5px -5px 10px #1e2028;
+    --input-focus-shadow: inset 4px 4px 8px #0b0c0e, inset -4px -4px 8px #1e2028, 0 0 0 3px rgba(139, 92, 246, 0.25);
+    --glass-bg: rgba(24, 25, 32, 0.65);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.07);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   }
 
   #social .button-icon {

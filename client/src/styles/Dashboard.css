@@ -13,7 +13,7 @@
 
     min-height:100vh;
 
-    background:#e0e5ec;
+    background:var(--app-bg);
 }
 
 .dashboard-content,
