@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 import Review from "../models/Review.js";
 import analyzeCode from "../utils/analyzeCode.js";
 import generateAIReview from "../services/ollamaService.js";
@@ -131,6 +133,13 @@ export const getReivewById = async (req, res) => {
     try {
         const { id } = req.params;
 
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid review ID."
+            });
+        }
+
         const review = await Review.findOne({
             _id: id,
             user: req.user._id
@@ -153,6 +162,46 @@ export const getReivewById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: error.message || "An error occured while fetching review."
+        });
+    }
+};
+
+//DELETE REVIEW API
+export const deleteReview = async(req, res) => {
+    try {
+        const { id } = req.params;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid review ID."
+            });
+        }
+
+        const review = await Review.findOne({
+            _id: id,
+            user: req.user._id
+        });
+
+        if (!review) {
+            return res.status(404).json({
+                success:false,
+                message: "Review not found."
+            });
+        }
+
+        await review.deleteOne();
+
+        return res.status(200).json({
+            success:true,
+            message: "Review Deleted Successfully."
+        });
+    } catch(error) {
+        console.error("Error in deleting review:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "An error occured while deleting review."
         });
     }
 };
