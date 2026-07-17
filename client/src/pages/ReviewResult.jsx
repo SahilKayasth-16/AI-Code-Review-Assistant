@@ -227,7 +227,7 @@ const ReviewResult = () => {
         return String(doc);
     });
 
-    const shortId = review._id.slice(-6);
+    const shortId = review.id.slice(-6);
     const fileExt = review.language === "Python" ? "py" : (review.language === "HTML/CSS" || review.language === "HTML_CSS") ? "html" : "js";
     const generatedFileName = `file_${shortId}.${fileExt}`;
 

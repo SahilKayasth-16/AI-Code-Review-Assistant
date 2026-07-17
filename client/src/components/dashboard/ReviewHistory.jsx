@@ -25,7 +25,7 @@ const ReviewHistory = () => {
             const token = localStorage.getItem("token");
             const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
             
-            const response = await fetch(`${apiUrl}/reviews`, {
+            const response = await fetch(`${apiUrl}/api/reviews`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -68,7 +68,7 @@ const ReviewHistory = () => {
             const token = localStorage.getItem("token");
             const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 
-            const response = await fetch(`${apiUrl}/reviews/${id}`, {
+            const response = await fetch(`${apiUrl}/api/reviews/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -78,7 +78,7 @@ const ReviewHistory = () => {
             const data = await response.json();
             if (response.ok && data.success) {
                 // Immediately remove from React local state
-                setReviews((prevReviews) => prevReviews.filter((r) => r._id !== id));
+                setReviews((prevReviews) => prevReviews.filter((r) => r.id !== id));
                 showNotification(data.message || "Review deleted successfully.", "success");
             } else {
                 throw new Error(data.message || "Failed to delete the review.");
@@ -168,9 +168,9 @@ const ReviewHistory = () => {
 
                                 return (
                                     <div 
-                                        key={review._id} 
+                                        key={review.id} 
                                         className="review-card" 
-                                        onClick={() => navigate(`/review/${review._id}`)}
+                                        onClick={() => navigate(`/review/${review.id}`)}
                                     >
                                         <div className="review-left">
                                             <div className="review-icon">
@@ -200,12 +200,12 @@ const ReviewHistory = () => {
                                             </span>
                                             <button 
                                                 className="delete-review-btn"
-                                                onClick={(e) => handleDelete(e, review._id)}
-                                                disabled={deletingId === review._id}
+                                                onClick={(e) => handleDelete(e, review.id)}
+                                                disabled={deletingId === review.id}
                                                 title="Delete Review"
                                             >
                                                 <FaTrash />
-                                                <span>{deletingId === review._id ? "Deleting..." : "Delete"}</span>
+                                                <span>{deletingId === review.id ? "Deleting..." : "Delete"}</span>
                                             </button>
                                         </div>
                                     </div>
@@ -219,4 +219,4 @@ const ReviewHistory = () => {
     );
 };
 
-export default ReviewHistory;
+export default ReviewHistory;

@@ -86,8 +86,8 @@ const NewReview = () => {
 
         try {
             const data = await submitCodeReview(code, language, inputMethod === "upload" ? uploadedFileName : null);
-            if (data.success && data.review && data.review._id) {
-                navigate(`/review/${data.review._id}`);
+            if (data.success && data.review && data.review.id) {
+                navigate(`/review/${data.review.id}`);
             } else {
                 setError("Failed to generate review. Response was missing details.");
             }
