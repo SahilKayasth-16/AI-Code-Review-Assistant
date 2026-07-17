@@ -23,8 +23,8 @@ An AI-powered Code Review Assistant built using the MERN Stack.
 ### Backend
 - Node.js
 - Express.js
-- MongoDB
-- Mongoose
+- PostgreSQL
+- Prisma
 - JWT Authentication
 - ESLint
 - Gemini API
