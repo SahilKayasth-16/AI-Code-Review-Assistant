@@ -27,7 +27,7 @@ An AI-powered Code Review Assistant built using the MERN Stack.
 - Prisma
 - JWT Authentication
 - ESLint
-- Gemini API
+- Ollama
 
 ## Project Structure
 AI-Code-Review-Assistant/
