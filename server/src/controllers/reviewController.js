@@ -1,6 +1,6 @@
 import prisma from "../config/prisma.js";
 import analyzeCode from "../utils/analyzeCode.js";
-import generateAIReview from "../services/ollamaService.js";
+import generateAIReview from "../services/aiService.js";
 import generateReviewPrompt from "../utils/reviewPrompt.js";
 
 const mapReviewResponse = (review) => {
