@@ -179,11 +179,16 @@ const ReviewHistory = () => {
 
                                             <div className="review-details">
                                                 <div className="review-meta-header">
-                                                    <h3>{review.language}</h3>
+                                                    <h3>{review.language === "HTML_CSS" ? "HTML/CSS" : review.language}</h3>
                                                     <span className={`score-badge ${getScoreClass(score)}`}>
                                                         Score: {score}
                                                     </span>
                                                 </div>
+                                                {review.fileName && (
+                                                    <p className="review-file-name" style={{ fontSize: "13px", fontWeight: "600", color: "#4f8cff", margin: "4px 0" }}>
+                                                        {review.fileName}
+                                                    </p>
+                                                )}
                                                 <p className="review-summary-text">{summary}</p>
                                                 <p className="review-date"><FaClock /> {formattedDate}</p>
                                             </div>

@@ -3,8 +3,10 @@ import "./CodeEditor.css";
 
 const CodeEditor = ({ code, onChange, language, disabled, placeholder = "Paste your code here..." }) => {
     const getFileTitle = () => {
-        switch (language) {
+        const lang = (language || "").toLowerCase();
+        switch (lang) {
             case "htmlcss":
+            case "html_css":
                 return "index.html";
             case "javascript":
                 return "app.js";

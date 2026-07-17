@@ -228,7 +228,7 @@ const ReviewResult = () => {
     });
 
     const shortId = review._id.slice(-6);
-    const fileExt = review.language === "Python" ? "py" : review.language === "HTML/CSS" ? "html" : "js";
+    const fileExt = review.language === "Python" ? "py" : (review.language === "HTML/CSS" || review.language === "HTML_CSS") ? "html" : "js";
     const generatedFileName = `file_${shortId}.${fileExt}`;
 
     return (
@@ -241,10 +241,31 @@ const ReviewResult = () => {
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                     <FaFileAlt style={{ color: '#4f8cff' }} />
                     <span style={{ fontSize: '15px', fontWeight: 600, color: '#4b5563' }}>
-                        {generatedFileName} ({review.language})
+                        {generatedFileName} ({review.language === "HTML_CSS" ? "HTML/CSS" : review.language})
                     </span>
                 </div>
             </div>
+
+            {review.fileName && (
+                <div className="nm-card metadata-card" style={{ 
+                    display: 'flex', 
+                    gap: '24px', 
+                    padding: '16px 24px', 
+                    marginBottom: '20px', 
+                    borderRadius: '16px',
+                    fontSize: '14px',
+                    boxShadow: '8px 8px 20px #bcc2cb, -8px -8px 20px #ffffff'
+                }}>
+                    <div>
+                        <span style={{ color: '#6b7280', display: 'block', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '4px' }}>Language</span>
+                        <strong style={{ color: '#24324a' }}>{review.language === "HTML_CSS" ? "HTML/CSS" : review.language}</strong>
+                    </div>
+                    <div style={{ borderLeft: '1px solid #bcc2cb', paddingLeft: '24px' }}>
+                        <span style={{ color: '#6b7280', display: 'block', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '4px' }}>Source File</span>
+                        <strong style={{ color: '#24324a' }}>{review.fileName}</strong>
+                    </div>
+                </div>
+            )}
 
             {/* Score & AI Review Summary Section */}
             <div className="summary-grid">

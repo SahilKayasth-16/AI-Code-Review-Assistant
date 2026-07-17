@@ -81,7 +81,7 @@ const History = () => {
                             <option value="all">All Languages</option>
                             <option value="javascript">JavaScript</option>
                             <option value="python">Python</option>
-                            <option value="java">Java</option>
+                            <option value="html/css">HTML/CSS</option>
                         </select>
                     </div>
 

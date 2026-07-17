@@ -2,9 +2,9 @@ import React from "react";
 import "./LanguageSelector.css";
 
 const languages = [
-    { value: "htmlcss", label: "HTML/CSS" },
-    { value: "javascript", label: "JavaScript" },
-    { value: "python", label: "Python" },
+    { value: "HTML_CSS", label: "HTML/CSS" },
+    { value: "JavaScript", label: "JavaScript" },
+    { value: "Python", label: "Python" },
 ];
 
 const LanguageSelector = ({ selected, onChange, disabled }) => {

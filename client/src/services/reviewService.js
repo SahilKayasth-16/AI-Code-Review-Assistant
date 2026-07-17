@@ -1,6 +1,6 @@
 // Service layer for communicating with the AI Review Assistant Backend APIs
 
-export const submitCodeReview = async (code, language) => {
+export const submitCodeReview = async (code, language, fileName = null) => {
     const token = localStorage.getItem("token");
     
     if (!code.trim()) {
@@ -9,7 +9,7 @@ export const submitCodeReview = async (code, language) => {
 
     // Map lowercase frontend select value to exact casing backend validation expects
     const languageMapping = {
-        "htmlcss": "HTML/CSS",
+        "htmlcss": "HTML_CSS",
         "javascript": "JavaScript",
         "python": "Python"
     };
@@ -21,7 +21,7 @@ export const submitCodeReview = async (code, language) => {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify({ code, language: mappedLanguage })
+        body: JSON.stringify({ code, language: mappedLanguage, fileName })
     });
 
     const data = await response.json();
@@ -49,12 +49,13 @@ export const fetchReviewHistory = async () => {
 
     // Map backend Mongo objects to format expected by History/ReviewCard components
     return (data.reviews || []).map((review) => {
-        const fileExt = review.language === "Python" ? "py" : review.language === "HTML/CSS" ? "html" : "js";
+        const fileExt = review.language === "Python" ? "py" : (review.language === "HTML/CSS" || review.language === "HTML_CSS") ? "html" : "js";
         const shortId = review._id.slice(-6);
         return {
             id: review._id,
-            file: `file_${shortId}.${fileExt}`,
-            language: review.language,
+            file: review.fileName || `file_${shortId}.${fileExt}`,
+            fileName: review.fileName,
+            language: review.language === "HTML_CSS" ? "HTML/CSS" : review.language,
             date: new Date(review.createdAt).toLocaleDateString("en-GB", {
                 day: "numeric",
                 month: "short",
