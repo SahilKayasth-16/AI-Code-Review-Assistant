@@ -15,7 +15,7 @@ export const submitCodeReview = async (code, language, fileName = null) => {
     };
     const mappedLanguage = languageMapping[language] || language;
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/reviews`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const submitCodeReview = async (code, language, fileName = null) => {
 export const fetchReviewHistory = async () => {
     const token = localStorage.getItem("token");
     
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/reviews`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -50,9 +50,9 @@ export const fetchReviewHistory = async () => {
     // Map backend Mongo objects to format expected by History/ReviewCard components
     return (data.reviews || []).map((review) => {
         const fileExt = review.language === "Python" ? "py" : (review.language === "HTML/CSS" || review.language === "HTML_CSS") ? "html" : "js";
-        const shortId = review._id.slice(-6);
+        const shortId = review.id.slice(-6);
         return {
-            id: review._id,
+            id: review.id,
             file: review.fileName || `file_${shortId}.${fileExt}`,
             fileName: review.fileName,
             language: review.language === "HTML_CSS" ? "HTML/CSS" : review.language,
@@ -70,7 +70,7 @@ export const fetchReviewHistory = async () => {
 export const getReviewById = async (id) => {
     const token = localStorage.getItem("token");
     
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/reviews/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews/${id}`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`
