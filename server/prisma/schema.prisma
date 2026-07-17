@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  reviews   Review[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Language {
+  HTML_CSS
+  JavaScript
+  Python
+}
+
+model Review {
+  id           String @id @default(cuid())
+
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  language     Language
+  code         String
+
+  analysis     Json?
+  reviewResult Json?
+
+  status       String
+  fileName     String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

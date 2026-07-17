@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import User from "../models/User.js";
+import prisma from "../config/prisma.js"
 import generateToken from "../utils/generateToken.js";
 
 //REGISTER API
@@ -21,7 +21,11 @@ export const registerUser = async (req, res) => {
             });
         }
 
-        const existingUser = await User.findOne({ email });
+        const existingUser = await prisma.user.findUnique({
+            where: {
+                email
+            }
+        });
 
         if (existingUser) {
             return res.status(400).json({
@@ -34,18 +38,20 @@ export const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const user = await User.create({
-            name,
-            email, 
-            password: hashedPassword
+        const user = await prisma.user.create({
+            data: {
+                name,
+                email, 
+                password: hashedPassword
+            }  
         });
 
-        res.status(200).json({
+        res.status(201).json({
             success: true,
             message: "User created successfully.",
-            token: generateToken(user._id),
+            token: generateToken(user.id),
             user: {
-                id: user._id,
+                id: user.id,
                 name: user.name,
                 email: user.email
             },
@@ -71,7 +77,11 @@ export const loginUser = async (req, res) => {
             });
         }
 
-        const user = await User.findOne({ email });
+        const user = await prisma.user.findUnique({
+            where: {
+                email
+            }
+        });
 
         if (!user) {
             return res.status(401).json({
@@ -85,16 +95,16 @@ export const loginUser = async (req, res) => {
         if (!isPasswordMatched) {
             return res.status(401).json({
                 success: false,
-                message: "Invlaid email or password."
+                message: "Invalid email or password."
             });
         }
 
         res.status(200).json ({
             success:true,
             message: "Login Successful.",
-            token: generateToken(user._id),
+            token: generateToken(user.id),
             user: {
-                id:user._id,
+                id:user.id,
                 name: user.name,
                 email: user.email
             }
