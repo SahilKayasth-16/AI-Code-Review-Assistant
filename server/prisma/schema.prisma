@@ -12,31 +12,27 @@ model User {
   name      String
   email     String   @unique
   password  String
-  reviews   Review[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  reviews   Review[]
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  userId       String
+  language     Language
+  code         String
+  analysis     Json?
+  reviewResult Json?
+  status       String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  fileName     String?
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum Language {
   HTML_CSS
   JavaScript
   Python
-}
-
-model Review {
-  id           String @id @default(cuid())
-
-  userId       String
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  language     Language
-  code         String
-
-  analysis     Json?
-  reviewResult Json?
-
-  status       String
-  fileName     String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
 }
