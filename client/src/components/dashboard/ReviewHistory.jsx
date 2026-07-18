@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./ReviewHistory.css";
 import { FaCheckCircle, FaClock, FaExclamationTriangle, FaSearch, FaTrash } from "react-icons/fa";
 import Loader from "../common/Loader";
+import { deleteReview } from "../../services/reviewService";
 
 const ReviewHistory = () => {
     const navigate = useNavigate();
@@ -65,24 +66,10 @@ const ReviewHistory = () => {
 
         try {
             setDeletingId(id);
-            const token = localStorage.getItem("token");
-            const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
-
-            const response = await fetch(`${apiUrl}/api/reviews/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            });
-
-            const data = await response.json();
-            if (response.ok && data.success) {
-                // Immediately remove from React local state
-                setReviews((prevReviews) => prevReviews.filter((r) => r.id !== id));
-                showNotification(data.message || "Review deleted successfully.", "success");
-            } else {
-                throw new Error(data.message || "Failed to delete the review.");
-            }
+            const data = await deleteReview(id);
+            // Immediately remove from React local state
+            setReviews((prevReviews) => prevReviews.filter((r) => r.id !== id));
+            showNotification(data.message || "Review deleted successfully.", "success");
         } catch (err) {
             console.error("Error deleting review:", err);
             showNotification(err.message || "Failed to delete review. Please try again.", "error");

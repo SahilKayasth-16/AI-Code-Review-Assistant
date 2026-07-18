@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReviewCard from "../components/review/ReviewCard";
 import Loader from "../components/common/Loader";
-import { fetchReviewHistory } from "../services/reviewService";
+import { fetchReviewHistory, deleteReview } from "../services/reviewService";
 import { FaSearch, FaFilter, FaCalendarAlt } from "react-icons/fa";
 import "../styles/History.css";
 
@@ -32,10 +32,16 @@ const History = () => {
         navigate(`/review/${id}`);
     };
 
-    const handleDelete = (id) => {
+    const handleDelete = async (id) => {
         const confirmed = window.confirm("Are you sure you want to delete this scan history?");
         if (confirmed) {
-            setReviews(reviews.filter((r) => r.id !== id));
+            try {
+                await deleteReview(id);
+                setReviews(reviews.filter((r) => r.id !== id));
+            } catch (err) {
+                console.error("Failed to delete review:", err);
+                alert(err.message || "Failed to delete review. Please try again.");
+            }
         }
     };
 

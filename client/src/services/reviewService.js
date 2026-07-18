@@ -84,3 +84,22 @@ export const getReviewById = async (id) => {
 
     return data; // Returns { success: true, review: { ... } }
 };
+
+export const deleteReview = async (id) => {
+    const token = localStorage.getItem("token");
+    
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.message || "Failed to delete the review");
+    }
+
+    return data; // Returns { success: true, message: "..." }
+};
+
